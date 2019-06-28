@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "7d36b1c0-438e-4d62-ba5d-0fb161f8bd66",
+		"name": "API TRELO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "442cc045-4b38-42cb-b8ac-1d861b83a02f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,202]);",
+							"});",
+							"    ",
+							"pm.test(\"test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    ",
+							"    console.log(jsonData.name);",
+							"    pm.expect(jsonData.name).to.eql(\" postman board\");",
+							"});",
+							"",
+							"pm.test(\"opis\", function () {",
+							"    var jsonData = pm.response.json();",
+							"      console.log(jsonData.desc);",
+							"    pm.expect(jsonData.desc).to.eql(\"\");",
+							"});",
+							"",
+							"pm.test(\"opis\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    ",
+							"    pm.expect(jsonData.desc).to.eql(\"\");",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"var id = jsonData.id;",
+							"",
+							"",
+							"pm.environment.set(\"envBoardId\", id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.trello.com/1/boards?name= postman board&key={{key}}&token={{token}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": " postman board"
+						},
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				},
+				"description": "create board"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT TRELLO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79290351-e34e-4193-a3f3-d97e26e106f1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/{{boardId}}?name=Sanelin novi brod jj&desc=Ovo je moj deskription&key={{key}}&token={{token}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{boardId}}"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Sanelin novi brod jj"
+						},
+						{
+							"key": "desc",
+							"value": "Ovo je moj deskription"
+						},
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DEL TRELLO",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/5d14ad53ed3ee570d6f05b36?key=89e055bc842d8c2f59a6fe1c1589428d&token=ecaf59d3dca3a477542fa09b9a95751081c71a89a7a7b5cc60e43ade662797cc",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"5d14ad53ed3ee570d6f05b36"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "89e055bc842d8c2f59a6fe1c1589428d"
+						},
+						{
+							"key": "token",
+							"value": "ecaf59d3dca3a477542fa09b9a95751081c71a89a7a7b5cc60e43ade662797cc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get trello",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a372ace4-ce62-4418-9334-3f086b3a1e08",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/boards/{{boardId}}?key={{key}}&token={{token}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"{{boardId}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
